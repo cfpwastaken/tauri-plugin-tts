@@ -28,6 +28,10 @@ pub fn run() {
 }
 ```
 
+## Permissions
+
+Add `tts:allow-speak` to your capabilities file.
+
 ## Android Instructions
 
 Make sure to add the following to your AndroidManifest.xml:
