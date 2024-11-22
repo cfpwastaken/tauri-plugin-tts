@@ -15,7 +15,8 @@ pub fn init<R: Runtime, C: DeserializeOwned>(
     api: PluginApi<R, C>,
 ) -> crate::Result<Tts<R>> {
     #[cfg(target_os = "android")]
-    let handle = api.register_android_plugin("", "ExamplePlugin")?;
+    let handle =
+        api.register_android_plugin("space.httpjames.tauri_plugin_tts", "ExamplePlugin")?;
     #[cfg(target_os = "ios")]
     let handle = api.register_ios_plugin(init_plugin_tts)?;
     Ok(Tts(handle))
@@ -25,15 +26,12 @@ pub fn init<R: Runtime, C: DeserializeOwned>(
 pub struct Tts<R: Runtime>(PluginHandle<R>);
 
 impl<R: Runtime> Tts<R> {
-    pub fn speak(&self, text: String) -> crate::Result<String> {
+    pub fn speak(&self, text: String) -> crate::Result<()> {
         println!("Starting speak operation with text: {}", text);
         let args = SpeakArgs { text };
-        self.0
-            .run_mobile_plugin("speak", Some(args))
-            .map(|res| res.unwrap_or_default())
-            .map_err(|e| {
-                println!("Speech error: {:?}", e); // Debug log
-                e.into()
-            })
+        self.0.run_mobile_plugin("speak", Some(args)).map_err(|e| {
+            println!("Speech error: {:?}", e); // Debug log
+            e.into()
+        })
     }
 }

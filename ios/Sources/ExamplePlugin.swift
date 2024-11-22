@@ -75,7 +75,7 @@ class Speak: NSObject, AVSpeechSynthesizerDelegate {
     
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
         print("Speech finished successfully")
-        currentInvoke?.resolve("Speech successful")
+        currentInvoke?.resolve()
         currentInvoke = nil
     }
 
