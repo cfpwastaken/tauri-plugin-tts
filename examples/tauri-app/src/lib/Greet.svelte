@@ -7,9 +7,7 @@
   async function greet() {
     // Learn more about Tauri commands at https://v2.tauri.app/develop/calling-rust/#commands
     greetMsg = await invoke("plugin:tts|speak", {
-      args: {
-        text: "hi",
-      },
+      text: `Hello ${name}. How are you?`,
     });
   }
 </script>

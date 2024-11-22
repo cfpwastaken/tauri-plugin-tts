@@ -13,6 +13,6 @@ use crate::TtsExt;
 // }
 
 #[command]
-pub(crate) async fn speak<R: Runtime>(app: AppHandle<R>, args: SpeakArgs) -> Result<()> {
-    app.tts().speak(args)
+pub(crate) async fn speak<R: Runtime>(app: AppHandle<R>, text: String) -> Result<()> {
+    app.tts().speak(text)
 }
