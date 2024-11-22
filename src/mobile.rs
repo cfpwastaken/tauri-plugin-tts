@@ -36,7 +36,7 @@ impl<R: Runtime> Tts<R> {
     }
 
     pub fn stop(&self) -> crate::Result<()> {
-        self.0.run_mobile_plugin("stop", None).map_err(|e| {
+        self.0.run_mobile_plugin("stop", Some(())).map_err(|e| {
             println!("Stop speech error: {:?}", e); // Debug log
             e.into()
         })
