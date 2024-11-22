@@ -17,4 +17,8 @@ impl<R: Runtime> Tts<R> {
     pub fn speak(&self, text: String) -> crate::Result<()> {
         Ok(())
     }
+
+    pub fn stop(&self) -> crate::Result<()> {
+        Ok(())
+    }
 }

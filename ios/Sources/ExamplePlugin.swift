@@ -88,6 +88,11 @@ class Speak: NSObject, AVSpeechSynthesizerDelegate {
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didStart utterance: AVSpeechUtterance) {
         print("Speech started")
     }
+
+    func stopSpeaking(invoke: Invoke) {
+        Self.voiceSynth.stopSpeaking(at: .immediate)
+        invoke.resolve()
+    }
 }
 
 class ExamplePlugin: Plugin {
@@ -113,7 +118,13 @@ class ExamplePlugin: Plugin {
         try speaker.sayThis(args.text, invoke: invoke)
     }
     
-    
+    @objc public func stop(_ invoke: Invoke) {
+        guard let speaker = Self.speaker else {
+            invoke.reject("Speaker not initialized")
+            return
+        }
+        speaker.stopSpeaking(invoke: invoke)
+    }
 }
 
 

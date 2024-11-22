@@ -10,6 +10,10 @@
       text: `Hello ${name}. How are you?`,
     });
   }
+
+  const stopSpeaking = async () => {
+    await invoke("plugin:tts|stop");
+  };
 </script>
 
 <div>
@@ -18,4 +22,6 @@
     <button on:click={greet}> Greet </button>
   </div>
   <p>{greetMsg}</p>
+
+  <button on:click={stopSpeaking}> Stop Speaking </button>
 </div>

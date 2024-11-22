@@ -64,4 +64,30 @@ Denies the speak command without any pre-configured scope.
 
 </td>
 </tr>
+
+<tr>
+<td>
+
+`tts:allow-stop`
+
+</td>
+<td>
+
+Enables the stop command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`tts:deny-stop`
+
+</td>
+<td>
+
+Denies the stop command without any pre-configured scope.
+
+</td>
+</tr>
 </table>

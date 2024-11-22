@@ -34,4 +34,11 @@ impl<R: Runtime> Tts<R> {
             e.into()
         })
     }
+
+    pub fn stop(&self) -> crate::Result<()> {
+        self.0.run_mobile_plugin("stop", None).map_err(|e| {
+            println!("Stop speech error: {:?}", e); // Debug log
+            e.into()
+        })
+    }
 }

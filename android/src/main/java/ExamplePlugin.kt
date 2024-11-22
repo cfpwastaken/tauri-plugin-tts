@@ -99,6 +99,12 @@ class ExamplePlugin(private val activity: Activity): Plugin(activity) {
         }
     }
 
+    @Command
+    fun stop(invoke: Invoke) {
+        tts?.stop()
+        invoke.resolve()
+    }
+
     // override fun destroy() {
     //     tts?.stop()
     //     tts?.shutdown()
