@@ -57,7 +57,7 @@ class ExamplePlugin(private val activity: Activity): Plugin(activity) {
             // Set language if provided
             args.language?.let { lang ->
                 try {
-                    val locale = Locale(lang)
+                    val locale = Locale.forLanguageTag(lang)
                     val result = tts?.setLanguage(locale)
                     if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
                         invoke.reject("Language not supported: $lang")

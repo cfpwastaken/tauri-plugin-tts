@@ -14,7 +14,7 @@ pub fn init<R: Runtime, C: DeserializeOwned>(
 pub struct Tts<R: Runtime>(AppHandle<R>);
 
 impl<R: Runtime> Tts<R> {
-    pub fn speak(&self, text: String) -> crate::Result<()> {
+    pub fn speak(&self, text: String, language: Option<String>) -> crate::Result<()> {
         Ok(())
     }
 
