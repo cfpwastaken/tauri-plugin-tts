@@ -1,5 +1,6 @@
 package space.httpjames.tauri_plugin_tts
 
+import android.content.Intent
 import android.app.Activity
 import android.speech.tts.TextToSpeech
 import android.speech.tts.UtteranceProgressListener
@@ -102,6 +103,13 @@ class ExamplePlugin(private val activity: Activity): Plugin(activity) {
     @Command
     fun stop(invoke: Invoke) {
         tts?.stop()
+        invoke.resolve()
+    }
+
+    @Command
+    fun configure(invoke: Invoke) {
+        val intent = Intent(TextToSpeech.Engine.ACTION_INSTALL_TTS_DATA)
+        activity.startActivity(intent)
         invoke.resolve()
     }
 

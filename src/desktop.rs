@@ -21,4 +21,8 @@ impl<R: Runtime> Tts<R> {
     pub fn stop(&self) -> crate::Result<()> {
         Ok(())
     }
+
+    pub fn configure(&self) -> crate::Result<()> {
+        Ok(())
+    }
 }

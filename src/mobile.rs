@@ -43,4 +43,12 @@ impl<R: Runtime> Tts<R> {
         });
         Ok(())
     }
+
+    pub fn configure(&self) -> crate::Result<()> {
+        self.0.run_mobile_plugin::<()>("configure", Some(())).map_err(|e| {
+            println!("Configure error: {:?}", e); // Debug log
+            // e.into()
+        });
+        Ok(())
+    }
 }

@@ -38,7 +38,7 @@ tauri::ios_plugin_binding!(init_plugin_tts);
 /// Initializes the plugin.
 pub fn init<R: Runtime>() -> TauriPlugin<R> {
     Builder::new("tts")
-        .invoke_handler(tauri::generate_handler![commands::speak, commands::stop])
+        .invoke_handler(tauri::generate_handler![commands::speak, commands::stop, commands::configure])
         .setup(|app, api| {
             #[cfg(mobile)]
             let tts = mobile::init(app, api)?;
