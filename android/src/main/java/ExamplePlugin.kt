@@ -20,6 +20,11 @@ internal class SpeakArgs {
     var language: String? = null
 }
 
+@InvokeArg
+internal class AvailableArgs {
+    var language: String? = null
+}
+
 @TauriPlugin
 class ExamplePlugin(private val activity: Activity): Plugin(activity) {
     private var tts: TextToSpeech? = null
@@ -111,6 +116,22 @@ class ExamplePlugin(private val activity: Activity): Plugin(activity) {
         val intent = Intent(TextToSpeech.Engine.ACTION_INSTALL_TTS_DATA)
         activity.startActivity(intent)
         invoke.resolve()
+    }
+
+    @Command
+    fun is_available(invoke: Invoke) {
+        if (!isInitialized || tts == null) {
+            invoke.reject("TTS not initialized")
+            return
+        }
+
+        val args = invoke.parseArgs(AvailableArgs::class.java)
+				val locale = Locale.forLanguageTag(args.language)
+				val res = tts?.setLanguage(locale)
+				val hasData = res != TextToSpeech.LANG_MISSING_DATA && res != TextToSpeech.LANG_NOT_SUPPORTED
+        val ret = JSObject()
+        ret.put("available", hasData)
+        invoke.resolve(ret)
     }
 
     // override fun destroy() {

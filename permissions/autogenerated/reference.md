@@ -18,6 +18,58 @@ Default permissions for the plugin
 <tr>
 <td>
 
+`tts:allow-configure`
+
+</td>
+<td>
+
+Enables the configure command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`tts:deny-configure`
+
+</td>
+<td>
+
+Denies the configure command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`tts:allow-is-available`
+
+</td>
+<td>
+
+Enables the is_available command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`tts:deny-is-available`
+
+</td>
+<td>
+
+Denies the is_available command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
 `tts:allow-ping`
 
 </td>

@@ -51,4 +51,15 @@ impl<R: Runtime> Tts<R> {
         });
         Ok(())
     }
+
+    pub fn is_available(&self, language: String) -> crate::Result<AvailableResult> {
+        let args = IsAvailableArgs { language };
+        Ok(self.0
+            .run_mobile_plugin::<AvailableResult>("is_available", Some(args))
+            .unwrap_or_else(|e| {
+                println!("is_available error: {:?}", e); // Debug log
+                // e.into();
+                AvailableResult { available: false }
+            }))
+    }
 }

@@ -25,4 +25,8 @@ impl<R: Runtime> Tts<R> {
     pub fn configure(&self) -> crate::Result<()> {
         Ok(())
     }
+
+    pub fn is_available(&self, language: String) -> crate::Result<AvailableResult> {
+        Ok(AvailableResult { available: true })
+    }
 }

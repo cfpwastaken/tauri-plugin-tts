@@ -18,3 +18,15 @@ pub struct SpeakArgs {
     pub text: String,
 		pub language: Option<String>,
 }
+
+#[derive(Debug, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub struct IsAvailableArgs {
+    pub language: String,
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub struct AvailableResult {
+    pub available: bool,
+}
