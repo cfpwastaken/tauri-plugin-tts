@@ -11,6 +11,7 @@ import app.tauri.annotation.TauriPlugin
 import app.tauri.plugin.Plugin
 import app.tauri.plugin.Invoke
 import app.tauri.plugin.JSObject
+import app.tauri.plugin.JSArray
 import java.util.Locale
 import java.util.UUID
 
@@ -132,6 +133,50 @@ class ExamplePlugin(private val activity: Activity): Plugin(activity) {
         val ret = JSObject()
         ret.put("available", hasData)
         invoke.resolve(ret)
+    }
+
+    @Command
+    fun get_voices(invoke: Invoke) {
+        if (!isInitialized || tts == null) {
+            invoke.reject("TTS not initialized")
+            return
+        }
+        val ttsLocal = tts ?: run {
+            invoke.reject("TTS not initialized")
+            return
+        }
+
+        val res = JSObject()
+
+        val engines = ttsLocal.getEngines()
+        val engineList = JSArray()
+
+        for (engine in engines) {
+            val obj = JSObject()
+            obj.put("label", engine.label)
+            obj.put("name", engine.name)
+            engineList.put(obj)
+        }
+
+        res.put("engines", engineList)
+
+        val voices = ttsLocal.getVoices()
+        val voiceList = JSArray()
+
+        for (voice in voices) {
+            val obj = JSObject()
+            obj.put("name", voice.getName())
+            obj.put("locale", voice.getLocale().toLanguageTag())
+            obj.put("iso3", voice.getLocale().getISO3Language())
+            obj.put("quality", voice.getQuality())
+            obj.put("latency", voice.getLatency())
+            obj.put("network", voice.isNetworkConnectionRequired())
+            voiceList.put(obj)
+        }
+
+        res.put("voices", voiceList)
+
+        invoke.resolve(res)
     }
 
     // override fun destroy() {

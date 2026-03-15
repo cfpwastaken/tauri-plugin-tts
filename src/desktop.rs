@@ -29,4 +29,11 @@ impl<R: Runtime> Tts<R> {
     pub fn is_available(&self, language: String) -> crate::Result<AvailableResult> {
         Ok(AvailableResult { available: true })
     }
+
+    pub fn get_voices(&self) -> crate::Result<VoicesResult> {
+        Ok(VoicesResult {
+            engines: vec![],
+            voices: vec![],
+        })
+    }
 }

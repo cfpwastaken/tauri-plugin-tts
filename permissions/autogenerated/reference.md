@@ -44,6 +44,32 @@ Denies the configure command without any pre-configured scope.
 <tr>
 <td>
 
+`tts:allow-get-voices`
+
+</td>
+<td>
+
+Enables the get_voices command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
+`tts:deny-get-voices`
+
+</td>
+<td>
+
+Denies the get_voices command without any pre-configured scope.
+
+</td>
+</tr>
+
+<tr>
+<td>
+
 `tts:allow-is-available`
 
 </td>

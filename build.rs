@@ -1,4 +1,4 @@
-const COMMANDS: &[&str] = &["speak", "stop", "configure", "is_available"];
+const COMMANDS: &[&str] = &["speak", "stop", "configure", "is_available", "get_voices"];
 
 fn main() {
     tauri_plugin::Builder::new(COMMANDS)

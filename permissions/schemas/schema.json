@@ -307,6 +307,18 @@
           "markdownDescription": "Denies the configure command without any pre-configured scope."
         },
         {
+          "description": "Enables the get_voices command without any pre-configured scope.",
+          "type": "string",
+          "const": "allow-get-voices",
+          "markdownDescription": "Enables the get_voices command without any pre-configured scope."
+        },
+        {
+          "description": "Denies the get_voices command without any pre-configured scope.",
+          "type": "string",
+          "const": "deny-get-voices",
+          "markdownDescription": "Denies the get_voices command without any pre-configured scope."
+        },
+        {
           "description": "Enables the is_available command without any pre-configured scope.",
           "type": "string",
           "const": "allow-is-available",

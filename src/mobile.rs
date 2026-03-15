@@ -62,4 +62,17 @@ impl<R: Runtime> Tts<R> {
                 AvailableResult { available: false }
             }))
     }
+
+    pub fn get_voices(&self) -> crate::Result<VoicesResult> {
+        Ok(self.0
+            .run_mobile_plugin::<VoicesResult>("get_voices", Some(()))
+            .unwrap_or_else(|e| {
+                println!("get_voices error: {:?}", e); // Debug log
+                // e.into();
+                VoicesResult {
+                    engines: vec![],
+                    voices: vec![],
+                }
+            }))
+    }
 }
